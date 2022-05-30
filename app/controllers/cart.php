@@ -40,7 +40,7 @@ class Cart extends Controller
             }
 
         }
-        //get all Product Mix 
+        //get all Product Mix  
         $list= $this->load_model('ProductMix');
         $data['product_mix']= $list->get_All();
         //load view

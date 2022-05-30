@@ -26,7 +26,7 @@
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#brand" aria-expanded="false" aria-controls="brand">
         <i class="mdi mdi-blogger"></i>&nbsp;&nbsp;
-        <span class="menu-title">Thương hiệu</span>
+        <span class="menu-title">Nhà Xuất Bản</span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="brand">

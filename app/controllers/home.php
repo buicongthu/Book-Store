@@ -7,8 +7,19 @@ class Home extends Controller
         //get new products
         $productModel = $this->load_model("product");
         $new_products = $productModel->get_New_Products();
-        $data['new_products'] = $new_products;
+        $star_products = $productModel->get_Star_Products();
+        
+        $data['new_products'] = $new_products; 
+        $data['star_products'] = $star_products; 
+        
+        
+        
 
+
+
+        
+       
+ 
         //get all Product Mix 
         $list= $this->load_model('ProductMix');
         $data['product_mix']= $list->get_All();

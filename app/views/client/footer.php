@@ -5,7 +5,7 @@
 
         <div class="block-7">
           <h3 class="footer-heading mb-4">About Us</h3>
-          <p style="font-family: 'Raleway', sans-serif;">Pharma tận dụng nền tảng công nghệ tiên tiến nhằm mang đến người dùng trải nghiệm dịch vụ Nhà thuốc thân thiện. Đáp ứng nhanh chóng, tận tâm, và hoàn toàn trực tuyến.</p>
+          <p style="font-family: 'Raleway', sans-serif;">Book-store chuyên cung cấp các thể loại sách cho mọi lứa tuổi</p>
         </div>
 
       </div>
@@ -37,11 +37,7 @@
       <div class="col-md-12">
         <p>
           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;
-          <script>
-            document.write(new Date().getFullYear());
-          </script> All rights reserved | This template is made
-          with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" class="text-primary">Team 20 - CNTT3K59 - GTVT</a>
+         
           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
         </p>
       </div>

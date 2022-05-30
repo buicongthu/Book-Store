@@ -13,6 +13,11 @@ class Product
         $db = new Database();
         return $db->read("select * from product where id in ($ids_str)");
     }
+    function get_Products_By_Idd($ids_str)
+    {
+        $db = new Database();
+        return $db->read("select * from product where id in ($ids_str)");
+    }
     function search($keyword, $limit, $offset)
     {
         $db = new Database();
@@ -60,8 +65,8 @@ class Product
 
         $data['name'] = trim($POST['name']);
         $data['name'] = trim($POST['name']);
-        $data['weight'] = trim($POST['weight']);
-        $data['unit'] = trim($POST['unit']);
+       
+       
         $data['price'] = trim($POST['price']);
         $data['quantity'] = trim($POST['quantity']);
         $data['category_id'] = trim($POST['category_id']);
@@ -70,8 +75,8 @@ class Product
         $data['image'] = trim($FILES['fileToUpload']['name']);
 
         $db = new Database();
-        $query = "INSERT INTO `product`( `name`, `weight`, `unit`, `image`, `price`, `quantity`, `description`, `category_id`, `brand_id`)
-         VALUES ('" . $data['name'] . "','" . $data['weight'] . "','" . $data['unit'] . "','" . $data['image'] . "','" . $data['price'] . "','" . $data['quantity'] . "','" . $data['description'] . "','" . $data['category_id'] . "','" . $data['brand_id'] . "')";
+        $query = "INSERT INTO `product`( `name`,`image`, `price`, `quantity`, `description`, `category_id`, `brand_id`)
+         VALUES ('" . $data['name'] . "','" . $data['image'] . "','" . $data['price'] . "','" . $data['quantity'] . "','" . $data['description'] . "','" . $data['category_id'] . "','" . $data['brand_id'] . "')";
         return $db->write($query);
     }
     function get_By_Id($id)
@@ -126,4 +131,11 @@ class Product
         $db = new Database();
         return $db->read("SELECT id, name ,image, price FROM product ORDER BY id DESC LIMIT 6;");
     }
+    function get_Star_Products(){
+        $db = new Database();
+        return $db->read("SELECT product.id ,product.name,product.image,product.price FROM product INNER JOIN comment ON product.id=comment.product_id order by comment.star DESC LIMIT 6 ;");
+    }
+
+  
+   
 }

@@ -19,7 +19,7 @@
                                 <?php endif; ?>
                             </div>
 
-                            <div class="form-group row">
+                            <!-- <div class="form-group row">
                                 <div class="col-md-6">
                                     <label>Trọng lượng</label>
                                     <?php if ($data['index'] == "edit") : ?>
@@ -27,8 +27,8 @@
                                     <?php else : ?>
                                         <input type="text" min="0" class="form-control" id="weight" name="weight" placeholder="Nhập trọng lượng">
                                     <?php endif; ?>
-                                </div>
-                                <div class="col-md-6">
+                                </div> -->
+                                <!-- <div class="col-md-6">
                                     <label>Đơn vị</label>
                                     <select class="form-control" id="unit" name="unit">
                                         <option value="select">Chọn đơn vị</option>
@@ -43,8 +43,8 @@
                                         <option>Chai</option>
                                         <option>ml</option>
                                     </select>
-                                </div>
-                            </div>
+                                </div> -->
+                            <!-- </div> -->
 
                             <div class="form-group row">
                                 <div class="col-md-6">
@@ -79,7 +79,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label>Thương hiệu</label>
+                                    <label>Nhà Xuất Bản</label>
                                     <select class="form-control" id="brand_id" name="brand_id">
                                         <?php if (isset($data['brand']) && is_array($data['brand'])) : ?>
                                             <?php foreach ($data['brand'] as $item) : ?>

@@ -291,6 +291,9 @@ class Admin extends Controller
         $_SESSION['success'] = "delete";
         return header("Location: " . ROOT . "admin/product");
       }
+      // elseif($_GET['action'] == "export"){
+        
+      // }
 
       //load view
       $this->view("admin/partials/_header", $data);

@@ -8,6 +8,9 @@
                         <p class="card-description">
                             <a href="<?= ROOT ?>admin/product?action=add">
                                 <i class="mdi mdi-plus-circle-outline">Thêm mới</i>
+                            </a><br><br>
+                            <a href="<?= ROOT ?>admin/product?action=export">
+                                <i class="mdi mdi-plus-circle-outline">export excel</i>
                             </a>
                         </p>
                         <div class="table-responsive">
@@ -15,7 +18,7 @@
                                 <thead>
                                     <tr>
                                         <th>Tên sản phẩm</th>
-                                        <th>Trọng lượng</th>
+                                        
                                         <th>Ảnh</th>
                                         <th>Giá</th>
                                         <th>Số lượng</th>
@@ -26,7 +29,7 @@
                                         <?php foreach ($data['product'] as $item) : ?>
                                             <tr>
                                                 <td><?= $item->name ?></td>
-                                                <td><?= $item->weight . " " . $item->unit ?></td>
+                                              
                                                 <td><img src="<?= ASSETS . "images/" . $item->image; ?>" alt="Product's image" class="product-image"></a></td>
                                                 <td><?= number_format($item->price); ?></td>
                                                 <td><?= $item->quantity ?></td>

@@ -6,6 +6,7 @@ class Detail extends Controller
         //load model
         $productModel = $this->load_model('product');
         $brandModel = $this->load_model('brand');
+        $cateModel = $this->load_model('category');
         
         //get product
         $product = $productModel->get_By_Id($id);
@@ -13,6 +14,8 @@ class Detail extends Controller
         $data['page_title'] = ($product != null) ? $product->name : "Not Found";
         $product_brand = $brandModel->getName_By_ProductId($id);
         $data['product_brand'] =  $product_brand;
+        $product_category = $cateModel->getcateName_By_ProductId($id);
+        $data['product_cate'] =  $product_category;
 
         //get related product
         $related_products = $productModel->get_Related_Products($product->category_id, $id);
@@ -22,9 +25,15 @@ class Detail extends Controller
         $list= $this->load_model('ProductMix');
         $data['product_mix']= $list->get_All();
 
-        //add to cart
-        if($_SERVER['REQUEST_METHOD'] == "POST"){
+        // add to cart
+        if(isset($_POST['addtocart'])){
             $this->add_to_cart($id,$_POST['quantity']);
+        }
+        //comment
+        $cmt1=$this->load_model('comment');
+        if(isset($_POST['sendcmt'])){
+            $cmt1->comment($id);
+            $data['cmt']=$cmt1->get_cmt_id_product($id);
         }
         
         //load view
@@ -75,6 +84,7 @@ class Detail extends Controller
         }
 
         header("Location:".ROOT."cart"); 
-    }
- 
+    } 
+  
+
 }

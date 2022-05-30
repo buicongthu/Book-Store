@@ -48,6 +48,12 @@ class Category
         FROM category INNER JOIN  product_mix on category.product_mix_id = product_mix.id WHERE category.id = $id");
         return $result[0];
     }
+    function getcateName_By_ProductId($id){
+        $id = (int)$id;
+        $db = new Database();
+        $result = $db->read("SELECT category.name FROM category inner join product on product.category_id = category.id WHERE product.id = $id;");
+        return $result[0];
+    }
     function update($POST){
         $data = array();
 

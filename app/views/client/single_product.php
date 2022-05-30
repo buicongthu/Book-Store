@@ -1,6 +1,6 @@
 <div class="col-sm-6 col-lg-4 text-center item mb-4">
     <span class="tag">New</span>
-    <a href="<?= ROOT ?>detail/<?= $item->id ?>"> <img src="<?= ASSETS . "images/" . $item->image; ?>" alt="Product's image" class="product-image"></a>
+    <a href="<?= ROOT ?>detail/<?= $item->id ?>"> <img src="<?= ASSETS . "images/" . $item->image; ?>" style="height:200px; width:150px" alt="Product's image" class="product-image"></a>
     <p>
         <a class="product-name" href="<?= ROOT ?>detail/<?= $item->id ?>">
             <?= $item->name; ?>
@@ -9,6 +9,7 @@
     <p class="price">
         <!--<del>95.00</del>&mdash;--> <?= number_format($item->price); ?> vnđ
     </p>
+    <p>Chính sách đổi trả</p>
     <p><a href="<?= ROOT ?>cart/add_to_cart/<?= $item->id ?>" class="buy-now btn btn-sm  btn-primary">Add To Cart</a></p>
 </div>
 

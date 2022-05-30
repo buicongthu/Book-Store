@@ -7,7 +7,7 @@ class SignUp extends Controller
 
         if($_SERVER['REQUEST_METHOD'] == "POST"){
             $user = $this->load_model("user");
-            $user->signUp($_POST);
+           $user->signup($_POST);
         }
 
         //get all Product Mix 

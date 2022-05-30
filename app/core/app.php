@@ -31,6 +31,8 @@ class App
 
         //run the class and method
         $this->params = array_values($url);
+       
+      
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
 

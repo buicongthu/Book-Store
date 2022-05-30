@@ -2,7 +2,7 @@
     <div class="filter-sidebar-left">
         <!--Categories-->
         <div class="title-left">
-            <h3>Categories</h3>
+            <h3>Thể Loại</h3>
         </div>
         <?php $id = 0; ?>
         <?php if (isset($data['product_mix']) && is_array($data['product_mix'])) : ?>
@@ -40,7 +40,7 @@
 
         <!--Brands-->
         <div class="title-left">
-            <h3>Brand</h3>
+            <h3>Nhà Xuất Bản</h3>
         </div>
         <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
             <?php if (isset($data['brand']) && is_array($data['brand'])) : ?>

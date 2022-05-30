@@ -1,7 +1,7 @@
 <?php
 
 /*set your website title*/
-define("WEBSITE_TITLE","Pharma");
+define("WEBSITE_TITLE","BOOK-STORE");
 
 /*set database variables*/
 define('DB_TYPE','mysql');
@@ -14,8 +14,9 @@ define('DB_HOST','localhost');
 define('PROTOCAL','http');
 
 /*root and asset paths*/
-$_SERVER['SERVER_NAME'] = "localhost:81";
+// $_SERVER['SERVER_NAME'] = "localhost:81";
 $path = str_replace("\\", "/",PROTOCAL ."://" . $_SERVER['SERVER_NAME'] . __DIR__  . "/"); //check server name and directory name
+
 $path1 = str_replace("\\", "/",PROTOCAL ."://" . $_SERVER['SERVER_NAME'] . __DIR__ ) ."/"; //check server name and directory name
 
 // $path = str_replace("\\", "/",PROTOCAL ."://" . "localhost:81" . __DIR__  . "/"); //check server name and directory name
@@ -23,6 +24,7 @@ $path = str_replace($_SERVER['DOCUMENT_ROOT'], "", $path);
 
 //define('ROOT', str_replace("client/core", "", $path));
 define('ROOT',str_replace("app/core/", "", $path));
+
 define('ASSETS', str_replace("app/core", "public/client", $path));
 define('ASSETS_ADMIN', str_replace("app/core", "public/admin", $path));
 

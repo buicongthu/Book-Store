@@ -46,6 +46,7 @@ class User
 
     public function login($POST)
     {
+
         //Password hashing
         $POST['password'] = hash('sha1', $POST['password']);
 
@@ -81,6 +82,7 @@ class User
         if (isset($_SESSION['user']) && $_SESSION['user'] != "") {
 
             unset($_SESSION['user']);
+            
             //redirect home page
             header("Location:" . ROOT . "index");
             die;
@@ -178,13 +180,15 @@ class User
         $result = $db->read("SELECT COUNT(*) AS total FROM user WHERE role = 'customer';");
         return $result[0]->total;
     }
-    function get_By_Id($id){
+    function get_By_Id($id)
+    {
         $id = (int)$id;
         $db = new Database();
         $result = $db->read("SELECT * FROM user WHERE id = $id AND role = 'customer'");
         return $result[0];
     }
-    function update($POST){
+    function update($POST)
+    {
         $data = array();
 
         $data['user_id'] = trim($POST['user_id']);
@@ -196,33 +200,65 @@ class User
         $data['datebirth'] = trim($POST['datebirth']);
         $data['phone'] = trim($POST['phone']);
         $data['address'] = trim($POST['address']);
-        if($data['old_password'] != $data['password']){
+        if ($data['old_password'] != $data['password']) {
             $data['new_password'] = hash('sha1', $POST['password']);
-            $query = "UPDATE `user` SET `name`='".$data['name']."',`phone`='".$data['phone']."',`email`='".$data['email']."',`password`='".$data['new_password']."',`gender`='".$data['gender']."',`address`='".$data['address']."',`datebirth`='".$data['datebirth']."' WHERE `id`='".$data['user_id']."'";
-        }
-        else{
-            $query = "UPDATE `user` SET `name`='".$data['name']."',`phone`='".$data['phone']."',`email`='".$data['email']."',`password`='".$data['password']."',`gender`='".$data['gender']."',`address`='".$data['address']."',`datebirth`='".$data['datebirth']."' WHERE `id`='".$data['user_id']."'";
+            $query = "UPDATE `user` SET `name`='" . $data['name'] . "',`phone`='" . $data['phone'] . "',`email`='" . $data['email'] . "',`password`='" . $data['new_password'] . "',`gender`='" . $data['gender'] . "',`address`='" . $data['address'] . "',`datebirth`='" . $data['datebirth'] . "' WHERE `id`='" . $data['user_id'] . "'";
+        } else {
+            $query = "UPDATE `user` SET `name`='" . $data['name'] . "',`phone`='" . $data['phone'] . "',`email`='" . $data['email'] . "',`password`='" . $data['password'] . "',`gender`='" . $data['gender'] . "',`address`='" . $data['address'] . "',`datebirth`='" . $data['datebirth'] . "' WHERE `id`='" . $data['user_id'] . "'";
         }
 
         $db = new Database();
         return  $db->write($query);
     }
-    function delete($id){
+    function delete($id)
+    {
         $id = (int) $id;
         $db = new Database();
-        
+
         $order_id = $db->read("SELECT `id` FROM `order` WHERE `customer_id` = $id;");
         $result = $order_id[0]->id;
         $orderdetail_id = $db->read("SELECT `id` FROM `order_detail` WHERE `order_id` = $result;");
-        
+
         $detail_ids = array();
-        $detail_ids = array_column($orderdetail_id,'id');
-        $ids_str = "'" .implode("','",$detail_ids) . "'";
+        $detail_ids = array_column($orderdetail_id, 'id');
+        $ids_str = "'" . implode("','", $detail_ids) . "'";
 
         $db->write("DELETE FROM `order_detail` WHERE `id` IN ($ids_str)");
         $db->write("DELETE FROM `order` WHERE `id` IN ($result)");
         $db->write("DELETE FROM `contact` WHERE user_id = $id");
 
         return  $db->write("DELETE FROM `user` WHERE `id`= $id;");
+    }
+
+    function cmt($id)
+    {
+        $id = $id;
+        show($_GET['content']);
+        show($id);
+        show($_SESSION['user']->id);
+    }
+    function comment($id)
+    {
+        
+
+        $data = array();
+        $db = new Database();
+        $data['user_id'] = $_SESSION['user']->id;
+        $data['product_id'] = $id;
+        $data['content'] = $_GET['content'];
+        $data['star']=$_GET['star'];
+        // show($data);
+       
+        $conn = mysqli_connect('localhost', 'root', '', 'drugstore');
+        
+        $sql="INSERT INTO `comment`( `product_id`, `user_id`, `content`,`star`) 
+        VALUES ('" . $data['product_id'] . "','" . $data['user_id'] . "','" . $data['content'] . "','" . $data['star'] . "')";
+        
+        $result=mysqli_query($conn,$sql);
+        // if(!$result) echo "ok";
+        
+        // $query = "INSERT INTO `comment`( `product_id`, `user_id`, `content`) 
+        //     VALUES ('" . $data['product_id'] . "','" . $data['user_id'] . "','" . $data['content'] . "')";
+        
     }
 }

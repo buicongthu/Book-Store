@@ -23,7 +23,7 @@ class Brand
     function getName_By_ProductId($id){
         $id = (int)$id;
         $db = new Database();
-        $result = $db->read("SELECT brand.name FROM product inner join brand on product.brand_id = brand.id WHERE product.id = brand.id and product.id = $id;");
+        $result = $db->read("SELECT brand.name FROM brand inner join product on product.brand_id = brand.id WHERE product.id = $id;");
         return $result[0];
     }
     function insert($POST)
@@ -45,6 +45,7 @@ class Brand
         $result = $db->read("SELECT * FROM brand WHERE id = $id");
         return $result[0];
     }
+ 
     function update($POST){
         $data = array();
 
